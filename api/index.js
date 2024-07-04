@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.router.js';
 import authRoutes from './routes/auth.route.js';
 
+
 dotenv.config();
 
 mongoose.
@@ -26,3 +27,14 @@ app.listen(3000, ()=>{
 app.use("/api/user",userRoutes);
 
 app.use("/api/auth",authRoutes);
+
+//Creating a middleware
+app.use((err,req,res,next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Sever Error';
+    res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message,
+    });
+})
