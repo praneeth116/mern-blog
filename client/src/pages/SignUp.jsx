@@ -3,7 +3,7 @@ import { Link , useNavigate} from 'react-router-dom';
 import {useState} from 'react'
 import { HiInformationCircle } from "react-icons/hi";
 
-export default function SignUp() {
+function SignUp() {
 
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
@@ -101,3 +101,5 @@ export default function SignUp() {
     </div>
   );
 }
+
+export default SignUp;
