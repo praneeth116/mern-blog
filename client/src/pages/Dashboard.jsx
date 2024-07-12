@@ -17,15 +17,12 @@ function Dashboard() {
   },[location.search])
   return (
     <div className='min-h-screen flex flex-col md:flex-row'>
-      <div>
+      <div className='md:w-56'>
         {/* Sidebar */}
         <DashSidebar/>
       </div>
-      <div>
-        {/* profile... */}
-        {tab === 'profile' && <DashProfile/>}
-      </div>
-
+      {/* profile... */}
+      {tab === 'profile' && <DashProfile/>}
     </div>
   )
 }
