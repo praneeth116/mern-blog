@@ -31,6 +31,7 @@ app.use("/api/user",userRoutes);
 
 app.use("/api/auth",authRoutes);
 
+
 //Creating a middleware
 app.use((err,req,res,next)=>{
     const statusCode = err.statusCode || 500;
