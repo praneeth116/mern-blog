@@ -41,7 +41,7 @@ export const signIn = async(req, res, next) => {
         //we need to authenticate the user now as both email and password are correct.
         //_id is unique for each of the user
         const token = jwt.sign(
-            {id: validUser._id}, process.env.JWT_SECRET
+            {id: validUser._id, isAdmin: validUser.isAdmin}, process.env.JWT_SECRET
         );
         //We don't want the password in the response.
         const {password: pass, ...rest} = validUser._doc;
@@ -56,7 +56,7 @@ export const google = async(req, res, next) => {
     try{
         const user = await User.findOne({email});
         if(user){
-            const token = jwt.sign({id: user._id}, process.env.JWT_SECRET);
+            const token = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_SECRET);
             const {password, ...rest} = user._doc;
             res.status(200).cookie('access_token', token, {httpOnly: true}).json(rest);
         }
@@ -70,7 +70,7 @@ export const google = async(req, res, next) => {
                 profilePicture: googlePhotoUrl
             });
             newUser.save();
-            const token = jwt.sign({id: newUser._id}, process.env.JWT_SECRET);
+            const token = jwt.sign({id: newUser._id, isAdmin: newUser.isAdmin}, process.env.JWT_SECRET);
             const {password, ...rest} = newUser._doc;
             res.status(200).cookie('access_token', token, {httpOnly: true}).json(rest);
         }
