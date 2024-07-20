@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import postRoutes from './routes/post.route.js'
 import userRoutes from './routes/user.router.js';
 import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
@@ -30,6 +31,8 @@ app.listen(3000, ()=>{
 app.use("/api/user",userRoutes);
 
 app.use("/api/auth",authRoutes);
+
+app.use("/api/post",postRoutes);
 
 
 //Creating a middleware
