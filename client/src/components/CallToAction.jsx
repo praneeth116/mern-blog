@@ -5,14 +5,14 @@ export default function CallToAction() {
     <div className='flex flex-col sm:flex-row p-3 border border-teal-500 justify-center items-center rounded-tl-3xl rounded-br-3xl text-center'>
         <div className="flex-1 justify-center flex flex-col">
             <h2 className='text-2xl'>
-                Want to write some interesting blogs
+                Want to read some interesting blogs
             </h2>
             <p className='text-gray-500 my-2'>
                 Sign Up for free
             </p>
             <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
                 <a href="https://www.100jsprojects.com" target='_blank' rel='noopener noreferrer'>
-                    Praneeth's Blog
+                    Reader's Blog
                 </a>
             </Button>
         </div>
