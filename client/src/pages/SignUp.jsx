@@ -1,4 +1,4 @@
-import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
+import { Alert, Button, Label, Spinner, TextInput, Checkbox } from 'flowbite-react';
 import { Link , useNavigate} from 'react-router-dom';
 import {useState} from 'react'
 import { HiInformationCircle } from "react-icons/hi";
@@ -6,6 +6,7 @@ import OAuth from '../components/OAuth';
 
 function SignUp() {
 
+  const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
   const [errorMessage,setErrorMessage] = useState(null)
@@ -74,7 +75,9 @@ function SignUp() {
               </div>
               <div> 
                 <Label value="Your password"/>
-                <TextInput type='password' placeholder='Password' id='password' onChange={handleChange}/>
+                <TextInput type={showPassword ? 'text':'password'} placeholder='Password' id='password' onChange={handleChange}/>
+                <Checkbox id="show-password" onClick={()=>setShowPassword(!showPassword)}></Checkbox>
+                <span className='pl-1 text-sm'>Show Password</span>
               </div>
               <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
               {
